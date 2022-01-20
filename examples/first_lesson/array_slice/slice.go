@@ -54,14 +54,18 @@ func shareSlice() {
 	fmt.Printf("s1: %v, len %d, cap: %d \n", s1, len(s1), cap(s1))
 	fmt.Printf("s2: %v, len %d, cap: %d \n", s2, len(s2), cap(s2))
 
+	// 1.这里在s2没有进行append之前，由于s2是由s1派生处理的，所以此时两者共享数据，因此会两者同时修改数据
 	s2[0] = 99
 	fmt.Printf("s1: %v, len %d, cap: %d \n", s1, len(s1), cap(s1))
 	fmt.Printf("s2: %v, len %d, cap: %d \n", s2, len(s2), cap(s2))
 
+	// 2.这里在s2没有进行append之后，新的s2是根据之前派生出的s2进行追加的，此时不在于母体s1共享数据了，
+	// 故导致之后s2[1]=1999，没有修改之前s1的数据
 	s2 = append(s2, 199)
 	fmt.Printf("s1: %v, len %d, cap: %d \n", s1, len(s1), cap(s1))
 	fmt.Printf("s2: %v, len %d, cap: %d \n", s2, len(s2), cap(s2))
 
+	// 这里没有修改s1的数据详见2
 	s2[1] = 1999
 	fmt.Printf("s1: %v, len %d, cap: %d \n", s1, len(s1), cap(s1))
 	fmt.Printf("s2: %v, len %d, cap: %d \n", s2, len(s2), cap(s2))
