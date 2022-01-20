@@ -8,7 +8,7 @@ var Global = "全局变量"
 var local = "包变量"
 
 var (
-	First string = "abc"
+	First        = "abc"
 	second int32 = 16
 )
 
@@ -32,6 +32,3 @@ func main() {
 	var d int
 	println(d)
 }
-
-
-
