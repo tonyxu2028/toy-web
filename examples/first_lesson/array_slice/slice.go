@@ -2,6 +2,9 @@ package main
 
 import "fmt"
 
+/**
+ * 切片处理方式，切片和数组的区别是切片不需要声明长度，但是数组需要
+ */
 func main() {
 	s1 := []int{1, 2, 3, 4} // 直接初始化了 4 个元素的切片
 	fmt.Printf("s1: %v, len %d, cap: %d \n", s1, len(s1), cap(s1))
@@ -21,14 +24,16 @@ func main() {
 	fmt.Printf("s3: %v, len %d, cap: %d \n", s3, len(s3), cap(s3))
 
 	// 按下标索引
-	fmt.Printf("s3[2]: %d", s3[2])
+	fmt.Printf("s3[2]: %d \n", s3[2])
+
 	// 超出下标范围，直接崩溃
 	// runtime error: index out of range [99] with length 4
 	// fmt.Printf("s3[99]: %d", s3[99])
-
 	// SubSlice()
-
 	//shareArr()
+	// shareSlice
+	fmt.Printf("shareSlice ::: \n")
+	shareSlice()
 }
 
 func SubSlice() {
@@ -43,8 +48,7 @@ func SubSlice() {
 	fmt.Printf("s4: %v, len %d, cap: %d \n", s4, len(s4), cap(s4))
 }
 
-func ShareSlice() {
-
+func shareSlice() {
 	s1 := []int{1, 2, 3, 4}
 	s2 := s1[2:]
 	fmt.Printf("s1: %v, len %d, cap: %d \n", s1, len(s1), cap(s1))
