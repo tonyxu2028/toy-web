@@ -6,13 +6,16 @@ func main() {
 	a := Fun0("Tom")
 	println(a)
 
+	println("Fun1 ::: ")
 	b, c := Fun1("a", 17)
 	println(b)
 	println(c)
 
+	println("Fun2 ::: ")
 	_, d := Fun2("a", "b")
 	println(d)
 
+	println("Fun4 ::: ")
 	// 不定参数后面可以传递任意多个值
 	Fun4("hello", 19, "CUICUI", "DaMing")
 	s := []string{"CUICUI", "DaMing"}
@@ -48,7 +51,7 @@ func Fun3(a, b, c string, abc, bcd int, p string) (d, e int, g string) {
 }
 
 // Fun4 不定参数。不定参数要放在最后面
-func Fun4(a string, b int, names...string)  {
+func Fun4(a string, b int, names ...string) {
 	// 我们使用的时候可以直接把 names 看做切片
 	for _, name := range names {
 		fmt.Printf("不定参数：%s \n", name)
